@@ -1,5 +1,4 @@
 export default async function handler(req, res) {
-    // Configura o CORS
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader('Access-Control-Allow-Origin', '*'); 
     res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
@@ -25,10 +24,7 @@ export default async function handler(req, res) {
             }
         });
 
-        if (!response.ok) {
-            throw new Error(`Erro na API interna: ${response.status}`);
-        }
-
+        if (!response.ok) throw new Error(`Erro na API interna: ${response.status}`);
         const data = await response.json();
 
         const formatted = data.map(msg => ({
@@ -44,7 +40,6 @@ export default async function handler(req, res) {
 
         res.status(200).json({ 'hydra:member': formatted });
     } catch (error) {
-        console.error("Erro interno no proxy de leitura:", error);
         res.status(500).json({ error: "Erro no Proxy de mensagens" });
     }
 }
