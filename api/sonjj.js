@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     }
 
     // 2. Coloque sua chave secreta AQUI (ela não vaza para o usuário)
-    const SONJJ_API_KEY = "SUA_API_KEY_AQUI";
+    const SONJJ_API_KEY = "b97ef7a79f132f2d9b045fffe13b0bed85d112befe68b8bbaadba45e580a908b";
 
     // 3. Pega os parâmetros que o nosso frontend vai enviar
     const { path, email, id, payload } = req.query;
